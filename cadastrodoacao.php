@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <?php
+    include("bd/conexao.php")
+    ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Doação</title>
+    <!--- link css bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <!-- css bootstrap máquina -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="shortcut icon" href="./img/icon.ico" sizes="64x64" type="image/x-icon">
+</head>
+<body>
+<?php include_once "header.php" ?>
+    <br>
+    <div charset="utf-8" class="container">
+        <fieldset>
+            <legend><h1>Formulário - Cadastro de Doação</h1></legend>
+            <form action="action_doacao.php" method="post" id="form-contato" enctype='multipart/form-data'>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe o Nome">
+                    <span class="msg-erro msg-nome" ></span>
+                </div>
+                <div class="form-group">
+                    <label for="nomedoador">Nome do Doador</label>
+                    <input type="text" class="form-control" id="nomedoador" name="nomedoador" placeholder="Informe o Nome do Doador">
+                    <span class="msg-erro msg-nomedoador" ></span>
+                </div>
+                <label for="tipo">Tipo de doação</label>
+                    <select class="form-control" name="tipo" id="tipo">
+                        <option value="">Selecione o tipo de doação</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="produto">Produto</option>
+                    </select>
+                    <span class="msg-erro msg-tipo"></span>
+                </div>
+
+                <div class="form-group" id="tipovalor">
+                    <label for="valor">Valor</label>
+                    <input type="number" class="form-control" id="valor" name="valor" placeholder="Informe o Valor">
+                    <span class="msg-erro msg-valor" ></span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="acao" value="incluir">
+                    <button type="submit" class="btn btn-primary" id="botao">
+                        Gravar
+                    </button>
+                    <a href="indexdoa.php" class="btn btn-danger pull-right">Voltar</a>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <script type="text/javascript" src="js/custompro.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tipovalor').hide(); // Oculta o input inicialmente
+
+            $('#tipo').change(function() {
+                if ($(this).val() == 'dinheiro') {
+                    $('#tipovalor').show(); // Mostra o input quando a opção 2 for selecionada
+                } else {
+                    $('#tipovalor').hide(); // Oculta o input para outras opções
+                }
+            });
+        });
+    </script>
+
+    <!-- jquery -->
+    <script
+      src='https://code.jquery.com/jquery-3.2.1.slim.js'
+      integrity='sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg='
+      crossorigin='anonymous'
+    ></script>
+
+    <!---link do js bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <!-- js do bootstrap na máquina -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
